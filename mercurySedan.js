@@ -1,5 +1,5 @@
 //this includes the vehicle class as a module
-const VehicleModule = require("./vehicle.js");
+const VehicleModule = require("./vehicle").Vehicle;
 
 //this shows how to call from this module...
 let v = new VehicleModule.Vehicle(
@@ -11,7 +11,7 @@ let v = new VehicleModule.Vehicle(
 );
 console.log(v.make);
 
-class Car extends Vehicle {
+class Car extends VehicleModule {
   constructor(
     maxPassengers,
     numPassengers,
@@ -33,6 +33,8 @@ class Car extends Vehicle {
     if (this.numPassengers < this.maxPassengers) {
       if (newPassengers + this.numPassengers <= this.maxPassengers) {
         availableRoom = true;
+      } else {
+        availableRoom = false;
       }
     }
   }
